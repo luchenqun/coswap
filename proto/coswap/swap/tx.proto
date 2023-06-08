@@ -11,6 +11,7 @@ option go_package = "coswap/x/swap/types";
 service Msg {
   rpc MintCoins       (MsgMintCoins      ) returns (MsgMintCoinsResponse      );
   rpc DistributeCoins (MsgDistributeCoins) returns (MsgDistributeCoinsResponse);
+  rpc AddLiquidity    (MsgAddLiquidity   ) returns (MsgAddLiquidityResponse   );
 }
 message MsgMintCoins {
            string                   admin  = 1;
@@ -26,4 +27,12 @@ message MsgDistributeCoins {
 }
 
 message MsgDistributeCoinsResponse {}
+
+message MsgAddLiquidity {
+  string                   creator = 1;
+  cosmos.base.v1beta1.Coin tokenA  = 2 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.Coin tokenB  = 3 [(gogoproto.nullable) = false];
+}
+
+message MsgAddLiquidityResponse {}
 
