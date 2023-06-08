@@ -52,3 +52,7 @@ func NewKeeper(
 func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", fmt.Sprintf("x/%s", types.ModuleName))
 }
+
+func (k Keeper) IsAdmin(ctx sdk.Context, addr sdk.AccAddress) bool {
+	return k.GetParams(ctx).Admin == addr.String()
+}
