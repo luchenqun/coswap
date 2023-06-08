@@ -1,21 +1,43 @@
 version: 1
 accounts:
-- name: alice
-  coins:
-  - 20000token
-  - 200000000stake
-- name: bob
-  coins:
-  - 10000token
-  - 100000000stake
+  - name: admin
+    coins: ["81000000dex"]
+    mnemonic: october pride genuine harvest reunion sight become tuna kingdom punch girl lizard cat crater fee emotion seat test output safe volume caught design soft
+  - name: alice
+    coins: ["50000000dex"]
+    mnemonic: sugar narrow update three surround cupboard vital vapor fabric city father toe tumble call element certain lava nose sponsor unaware code combine whale muscle
+  - name: bob
+    coins: ["60000000dex"]
+    mnemonic: mammal knife face mechanic short balance toe raven armor asset grass wing crew quit arena purchase lawsuit scene style fork gauge they bottom mammal
+validators:
+  - name: admin
+    bonded: "1000000dex"
 client:
   openapi:
     path: docs/static/openapi.yml
 faucet:
-  name: bob
-  coins:
-  - 5token
-  - 100000stake
-validators:
-- name: alice
-  bonded: 100000000stake
+  name: admin
+  coins: ["1000000dex"]
+genesis:
+  app_state:
+    staking:
+      params:
+        bond_denom: "dex"
+    crisis:
+      constant_fee:
+        denom: "dex"
+    gov:
+      deposit_params:
+        min_deposit:
+          -
+            denom: "dex"
+            amount: "1000"
+    mint:
+      params:
+        mint_denom: "dex"
+        inflation_max: "0.000000000000000000"
+        inflation_min: "0.000000000000000000"
+    swap:
+      params:
+        admin: "dex12ltvts09ga3gj32hsmnwq922ze0gmk4tv8nrzd"
+        commissionRate: "0.050000000000000000"
