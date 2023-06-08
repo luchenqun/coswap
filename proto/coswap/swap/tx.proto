@@ -1,7 +1,20 @@
 syntax = "proto3";
+
 package coswap.swap;
+
+import "cosmos/base/v1beta1/coin.proto";
+import "gogoproto/gogo.proto";
 
 option go_package = "coswap/x/swap/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc MintCoins (MsgMintCoins) returns (MsgMintCoinsResponse);
+}
+message MsgMintCoins {
+           string                   admin  = 1;
+  repeated cosmos.base.v1beta1.Coin amount = 2 [(gogoproto.nullable) = false];
+}
+
+message MsgMintCoinsResponse {}
+
