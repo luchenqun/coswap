@@ -1,0 +1,7 @@
+syntax = "proto3";
+package coswap.swap;
+
+option go_package = "coswap/x/swap/types";
+
+// Msg defines the Msg service.
+service Msg {}

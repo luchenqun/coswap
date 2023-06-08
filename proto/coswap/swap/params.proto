@@ -1,0 +1,14 @@
+syntax = "proto3";
+package coswap.swap;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "coswap/x/swap/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+  string admin = 1 [(gogoproto.moretags) = "yaml:\"admin\""];
+  string commissionRate = 2 [(gogoproto.moretags) = "yaml:\"commission_rate\""];
+}
