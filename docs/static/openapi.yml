@@ -66837,6 +66837,8 @@ definitions:
     type: object
   coswap.swap.MsgMintCoinsResponse:
     type: object
+  coswap.swap.MsgSwapCoinResponse:
+    type: object
   coswap.swap.Params:
     type: object
     properties:

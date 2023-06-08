@@ -12,6 +12,7 @@ service Msg {
   rpc MintCoins       (MsgMintCoins      ) returns (MsgMintCoinsResponse      );
   rpc DistributeCoins (MsgDistributeCoins) returns (MsgDistributeCoinsResponse);
   rpc AddLiquidity    (MsgAddLiquidity   ) returns (MsgAddLiquidityResponse   );
+  rpc SwapCoin        (MsgSwapCoin       ) returns (MsgSwapCoinResponse       );
 }
 message MsgMintCoins {
            string                   admin  = 1;
@@ -35,4 +36,12 @@ message MsgAddLiquidity {
 }
 
 message MsgAddLiquidityResponse {}
+
+message MsgSwapCoin {
+  string                   creator      = 1;
+  cosmos.base.v1beta1.Coin amountIn     = 2 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.Coin amountOutMin = 3 [(gogoproto.nullable) = false];
+}
+
+message MsgSwapCoinResponse {}
 

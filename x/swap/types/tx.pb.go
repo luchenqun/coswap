@@ -309,6 +309,102 @@ func (m *MsgAddLiquidityResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgAddLiquidityResponse proto.InternalMessageInfo
 
+type MsgSwapCoin struct {
+	Creator      string     `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	AmountIn     types.Coin `protobuf:"bytes,2,opt,name=amountIn,proto3" json:"amountIn"`
+	AmountOutMin types.Coin `protobuf:"bytes,3,opt,name=amountOutMin,proto3" json:"amountOutMin"`
+}
+
+func (m *MsgSwapCoin) Reset()         { *m = MsgSwapCoin{} }
+func (m *MsgSwapCoin) String() string { return proto.CompactTextString(m) }
+func (*MsgSwapCoin) ProtoMessage()    {}
+func (*MsgSwapCoin) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6dec66760237e89a, []int{6}
+}
+func (m *MsgSwapCoin) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSwapCoin) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSwapCoin.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSwapCoin) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSwapCoin.Merge(m, src)
+}
+func (m *MsgSwapCoin) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSwapCoin) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSwapCoin.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSwapCoin proto.InternalMessageInfo
+
+func (m *MsgSwapCoin) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgSwapCoin) GetAmountIn() types.Coin {
+	if m != nil {
+		return m.AmountIn
+	}
+	return types.Coin{}
+}
+
+func (m *MsgSwapCoin) GetAmountOutMin() types.Coin {
+	if m != nil {
+		return m.AmountOutMin
+	}
+	return types.Coin{}
+}
+
+type MsgSwapCoinResponse struct {
+}
+
+func (m *MsgSwapCoinResponse) Reset()         { *m = MsgSwapCoinResponse{} }
+func (m *MsgSwapCoinResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgSwapCoinResponse) ProtoMessage()    {}
+func (*MsgSwapCoinResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6dec66760237e89a, []int{7}
+}
+func (m *MsgSwapCoinResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSwapCoinResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSwapCoinResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSwapCoinResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSwapCoinResponse.Merge(m, src)
+}
+func (m *MsgSwapCoinResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSwapCoinResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSwapCoinResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSwapCoinResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgMintCoins)(nil), "coswap.swap.MsgMintCoins")
 	proto.RegisterType((*MsgMintCoinsResponse)(nil), "coswap.swap.MsgMintCoinsResponse")
@@ -316,37 +412,44 @@ func init() {
 	proto.RegisterType((*MsgDistributeCoinsResponse)(nil), "coswap.swap.MsgDistributeCoinsResponse")
 	proto.RegisterType((*MsgAddLiquidity)(nil), "coswap.swap.MsgAddLiquidity")
 	proto.RegisterType((*MsgAddLiquidityResponse)(nil), "coswap.swap.MsgAddLiquidityResponse")
+	proto.RegisterType((*MsgSwapCoin)(nil), "coswap.swap.MsgSwapCoin")
+	proto.RegisterType((*MsgSwapCoinResponse)(nil), "coswap.swap.MsgSwapCoinResponse")
 }
 
 func init() { proto.RegisterFile("coswap/swap/tx.proto", fileDescriptor_6dec66760237e89a) }
 
 var fileDescriptor_6dec66760237e89a = []byte{
-	// 400 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0xbd, 0x6e, 0xe2, 0x40,
-	0x10, 0xc7, 0x6d, 0x7c, 0xc7, 0x89, 0x05, 0x09, 0xc9, 0x67, 0xdd, 0x19, 0x0b, 0x19, 0xce, 0x3a,
-	0x29, 0x34, 0xb1, 0x05, 0x29, 0x52, 0xe3, 0xa4, 0x89, 0x14, 0x37, 0x2e, 0x13, 0xa5, 0xf0, 0xc7,
-	0xca, 0x5a, 0x45, 0x78, 0x1d, 0xcf, 0x92, 0x40, 0xc9, 0x1b, 0xe4, 0x05, 0xf2, 0x3e, 0x94, 0x94,
-	0xa9, 0xa2, 0x08, 0x5e, 0x24, 0xf2, 0x17, 0x38, 0x8e, 0x42, 0x42, 0xb3, 0xda, 0x9d, 0xf9, 0xcf,
-	0x7f, 0x7e, 0xf2, 0x78, 0x90, 0xe4, 0x51, 0x78, 0x70, 0x22, 0x23, 0x3d, 0xd8, 0x4c, 0x8f, 0x62,
-	0xca, 0xa8, 0xd8, 0xcc, 0xa2, 0x7a, 0x72, 0x28, 0xaa, 0x47, 0x61, 0x42, 0xc1, 0x70, 0x1d, 0xc0,
-	0xc6, 0xfd, 0xd0, 0xc5, 0xcc, 0x19, 0x1a, 0x1e, 0x25, 0x61, 0x26, 0x56, 0xa4, 0x80, 0x06, 0x34,
-	0xbd, 0x1a, 0xc9, 0x2d, 0x8b, 0x6a, 0x37, 0xa8, 0x65, 0x41, 0x60, 0x91, 0x90, 0x9d, 0x51, 0x12,
-	0x82, 0x28, 0xa1, 0x9f, 0x8e, 0x3f, 0x21, 0xa1, 0xcc, 0xf7, 0xf9, 0x41, 0xc3, 0xce, 0x1e, 0xe2,
-	0x29, 0xaa, 0x3b, 0x13, 0x3a, 0x0d, 0x99, 0x5c, 0xeb, 0x0b, 0x83, 0xe6, 0xa8, 0xa3, 0x67, 0xcd,
-	0xf4, 0xa4, 0x99, 0x9e, 0x37, 0xd3, 0x13, 0x07, 0xf3, 0xc7, 0xf2, 0xa5, 0xc7, 0xd9, 0xb9, 0x5c,
-	0xfb, 0x83, 0xa4, 0xb2, 0xbd, 0x8d, 0x21, 0xa2, 0x21, 0x60, 0x6d, 0xc1, 0x23, 0xd1, 0x82, 0xe0,
-	0x9c, 0x00, 0x8b, 0x89, 0x3b, 0x65, 0x78, 0x5f, 0xf7, 0x2e, 0x6a, 0x30, 0x3a, 0xf6, 0xfd, 0x18,
-	0x03, 0xc8, 0xb5, 0x34, 0xb3, 0x0b, 0x94, 0xd8, 0x84, 0xc3, 0xd8, 0xba, 0x48, 0xf9, 0x88, 0xb0,
-	0x25, 0x7c, 0xe2, 0x51, 0xdb, 0x82, 0x60, 0xec, 0xfb, 0x97, 0xe4, 0x6e, 0x4a, 0x7c, 0xc2, 0xe6,
-	0xa2, 0x8c, 0x7e, 0x79, 0x31, 0x76, 0x18, 0x8d, 0x73, 0xc0, 0xe2, 0x99, 0x40, 0x30, 0x7a, 0x8b,
-	0xc3, 0x71, 0xca, 0xf7, 0x1d, 0x88, 0x4c, 0xbe, 0x2d, 0x34, 0x65, 0xe1, 0x90, 0x42, 0x53, 0xeb,
-	0xa0, 0xbf, 0x15, 0xbc, 0x02, 0x7d, 0xb4, 0xa8, 0x21, 0xc1, 0x82, 0x40, 0xbc, 0x40, 0x8d, 0xdd,
-	0x60, 0x53, 0xe3, 0xe2, 0x67, 0xd1, 0xcb, 0x43, 0x51, 0xfe, 0x7d, 0x9a, 0x2a, 0x2c, 0xc5, 0x6b,
-	0xd4, 0xae, 0xce, 0xaa, 0x57, 0xad, 0xaa, 0x08, 0x94, 0xa3, 0x2f, 0x04, 0x5b, 0x73, 0x1b, 0xb5,
-	0xde, 0x7d, 0xe6, 0x6e, 0xb5, 0xb0, 0x9c, 0x55, 0xfe, 0xef, 0xcb, 0x16, 0x9e, 0xe6, 0xf1, 0x72,
-	0xad, 0xf2, 0xab, 0xb5, 0xca, 0xbf, 0xae, 0x55, 0xfe, 0x71, 0xa3, 0x72, 0xab, 0x8d, 0xca, 0x3d,
-	0x6f, 0x54, 0xee, 0xea, 0x77, 0xbe, 0x4a, 0xb3, 0x7c, 0x99, 0xe6, 0x11, 0x06, 0xb7, 0x9e, 0x6e,
-	0xc3, 0xc9, 0x5b, 0x00, 0x00, 0x00, 0xff, 0xff, 0x57, 0x01, 0x98, 0x70, 0x68, 0x03, 0x00, 0x00,
+	// 467 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0xc1, 0x6e, 0xd3, 0x40,
+	0x10, 0x86, 0xb3, 0x09, 0x94, 0x66, 0x12, 0xa9, 0xd2, 0x36, 0x80, 0x6b, 0x45, 0x6e, 0xb0, 0x90,
+	0xe8, 0x05, 0x5b, 0x2d, 0x07, 0x0e, 0x9c, 0x92, 0x22, 0xa4, 0x4a, 0x58, 0x48, 0xe1, 0x06, 0xe2,
+	0xe0, 0xd8, 0x2b, 0x6b, 0x85, 0xb2, 0x6b, 0x3c, 0x6b, 0xda, 0x1e, 0x79, 0x03, 0x5e, 0x80, 0x07,
+	0xe0, 0x4d, 0xca, 0xad, 0x47, 0x4e, 0x08, 0x25, 0x2f, 0x82, 0xec, 0xb5, 0x1d, 0xd7, 0xa8, 0x69,
+	0x72, 0x59, 0xed, 0xee, 0xcc, 0xff, 0xcf, 0xb7, 0xf6, 0x68, 0x60, 0x10, 0x48, 0x3c, 0xf7, 0x63,
+	0x37, 0x5f, 0xd4, 0x85, 0x13, 0x27, 0x52, 0x49, 0xda, 0xd3, 0xb7, 0x4e, 0xb6, 0x98, 0x56, 0x20,
+	0x71, 0x2e, 0xd1, 0x9d, 0xf9, 0xc8, 0xdc, 0xaf, 0xc7, 0x33, 0xa6, 0xfc, 0x63, 0x37, 0x90, 0x5c,
+	0xe8, 0x64, 0x73, 0x10, 0xc9, 0x48, 0xe6, 0x5b, 0x37, 0xdb, 0xe9, 0x5b, 0xfb, 0x13, 0xf4, 0x3d,
+	0x8c, 0x3c, 0x2e, 0xd4, 0xa9, 0xe4, 0x02, 0xe9, 0x00, 0xee, 0xfb, 0xe1, 0x9c, 0x0b, 0x83, 0x8c,
+	0xc8, 0x51, 0x77, 0xaa, 0x0f, 0xf4, 0x25, 0xec, 0xf8, 0x73, 0x99, 0x0a, 0x65, 0xb4, 0x47, 0x9d,
+	0xa3, 0xde, 0xc9, 0x81, 0xa3, 0x8b, 0x39, 0x59, 0x31, 0xa7, 0x28, 0xe6, 0x64, 0x0e, 0x93, 0x7b,
+	0x57, 0x7f, 0x0e, 0x5b, 0xd3, 0x22, 0xdd, 0x7e, 0x04, 0x83, 0xba, 0xfd, 0x94, 0x61, 0x2c, 0x05,
+	0x32, 0xfb, 0x1b, 0x01, 0xea, 0x61, 0xf4, 0x9a, 0xa3, 0x4a, 0xf8, 0x2c, 0x55, 0x6c, 0x5d, 0xf5,
+	0x21, 0x74, 0x95, 0x1c, 0x87, 0x61, 0xc2, 0x10, 0x8d, 0x76, 0x1e, 0x59, 0x5d, 0xd4, 0xd8, 0x3a,
+	0xdb, 0xb1, 0x0d, 0xc1, 0xfc, 0x1f, 0xa1, 0x22, 0xfc, 0x41, 0x60, 0xcf, 0xc3, 0x68, 0x1c, 0x86,
+	0x6f, 0xf9, 0x97, 0x94, 0x87, 0x5c, 0x5d, 0x52, 0x03, 0x1e, 0x04, 0x09, 0xf3, 0x95, 0x4c, 0x0a,
+	0xc0, 0xf2, 0x98, 0x41, 0x28, 0xf9, 0x99, 0x89, 0x71, 0xce, 0xb7, 0x09, 0x84, 0x4e, 0xaf, 0x84,
+	0x13, 0xa3, 0xb3, 0x8d, 0x70, 0x62, 0x1f, 0xc0, 0xe3, 0x06, 0x5e, 0x85, 0xfe, 0x93, 0x40, 0xcf,
+	0xc3, 0xe8, 0xfd, 0xb9, 0x1f, 0x67, 0xc2, 0x35, 0xd8, 0xaf, 0x60, 0x57, 0x7f, 0x8c, 0x33, 0xb1,
+	0x29, 0x78, 0x25, 0xa0, 0xa7, 0xd0, 0xd7, 0xfb, 0x77, 0xa9, 0xf2, 0xb8, 0xd8, 0xf4, 0x01, 0x37,
+	0x44, 0xf6, 0x43, 0xd8, 0xaf, 0xa1, 0x96, 0x4f, 0x38, 0xf9, 0xd5, 0x86, 0x8e, 0x87, 0x11, 0x3d,
+	0x83, 0xee, 0xaa, 0x37, 0x73, 0xeb, 0xb2, 0xdf, 0x9d, 0x7a, 0x5f, 0x99, 0x4f, 0x6e, 0x0d, 0x95,
+	0x96, 0xf4, 0x23, 0xec, 0x35, 0xdb, 0xed, 0xb0, 0xa9, 0x6a, 0x24, 0x98, 0xcf, 0xee, 0x48, 0xa8,
+	0xcc, 0xa7, 0xd0, 0xbf, 0xd1, 0x29, 0xc3, 0xa6, 0xb0, 0x1e, 0x35, 0x9f, 0xae, 0x8b, 0x56, 0x9e,
+	0x6f, 0x60, 0x77, 0xf5, 0x0b, 0x9b, 0x8a, 0x32, 0x62, 0x8e, 0x6e, 0x8b, 0x94, 0x3e, 0x93, 0xe7,
+	0x57, 0x0b, 0x8b, 0x5c, 0x2f, 0x2c, 0xf2, 0x77, 0x61, 0x91, 0xef, 0x4b, 0xab, 0x75, 0xbd, 0xb4,
+	0x5a, 0xbf, 0x97, 0x56, 0xeb, 0xc3, 0x7e, 0x31, 0x55, 0x2e, 0x8a, 0xb9, 0x72, 0x19, 0x33, 0x9c,
+	0xed, 0xe4, 0x83, 0xe1, 0xc5, 0xbf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x57, 0x94, 0xce, 0xe7, 0x73,
+	0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -364,6 +467,7 @@ type MsgClient interface {
 	MintCoins(ctx context.Context, in *MsgMintCoins, opts ...grpc.CallOption) (*MsgMintCoinsResponse, error)
 	DistributeCoins(ctx context.Context, in *MsgDistributeCoins, opts ...grpc.CallOption) (*MsgDistributeCoinsResponse, error)
 	AddLiquidity(ctx context.Context, in *MsgAddLiquidity, opts ...grpc.CallOption) (*MsgAddLiquidityResponse, error)
+	SwapCoin(ctx context.Context, in *MsgSwapCoin, opts ...grpc.CallOption) (*MsgSwapCoinResponse, error)
 }
 
 type msgClient struct {
@@ -401,11 +505,21 @@ func (c *msgClient) AddLiquidity(ctx context.Context, in *MsgAddLiquidity, opts 
 	return out, nil
 }
 
+func (c *msgClient) SwapCoin(ctx context.Context, in *MsgSwapCoin, opts ...grpc.CallOption) (*MsgSwapCoinResponse, error) {
+	out := new(MsgSwapCoinResponse)
+	err := c.cc.Invoke(ctx, "/coswap.swap.Msg/SwapCoin", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	MintCoins(context.Context, *MsgMintCoins) (*MsgMintCoinsResponse, error)
 	DistributeCoins(context.Context, *MsgDistributeCoins) (*MsgDistributeCoinsResponse, error)
 	AddLiquidity(context.Context, *MsgAddLiquidity) (*MsgAddLiquidityResponse, error)
+	SwapCoin(context.Context, *MsgSwapCoin) (*MsgSwapCoinResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -420,6 +534,9 @@ func (*UnimplementedMsgServer) DistributeCoins(ctx context.Context, req *MsgDist
 }
 func (*UnimplementedMsgServer) AddLiquidity(ctx context.Context, req *MsgAddLiquidity) (*MsgAddLiquidityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddLiquidity not implemented")
+}
+func (*UnimplementedMsgServer) SwapCoin(ctx context.Context, req *MsgSwapCoin) (*MsgSwapCoinResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SwapCoin not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -480,6 +597,24 @@ func _Msg_AddLiquidity_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_SwapCoin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSwapCoin)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).SwapCoin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/coswap.swap.Msg/SwapCoin",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).SwapCoin(ctx, req.(*MsgSwapCoin))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "coswap.swap.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -495,6 +630,10 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddLiquidity",
 			Handler:    _Msg_AddLiquidity_Handler,
+		},
+		{
+			MethodName: "SwapCoin",
+			Handler:    _Msg_SwapCoin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -715,6 +854,79 @@ func (m *MsgAddLiquidityResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgSwapCoin) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSwapCoin) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSwapCoin) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.AmountOutMin.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintTx(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0x1a
+	{
+		size, err := m.AmountIn.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintTx(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0x12
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgSwapCoinResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSwapCoinResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSwapCoinResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -804,6 +1016,32 @@ func (m *MsgAddLiquidity) Size() (n int) {
 }
 
 func (m *MsgAddLiquidityResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgSwapCoin) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = m.AmountIn.Size()
+	n += 1 + l + sovTx(uint64(l))
+	l = m.AmountOutMin.Size()
+	n += 1 + l + sovTx(uint64(l))
+	return n
+}
+
+func (m *MsgSwapCoinResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1357,6 +1595,204 @@ func (m *MsgAddLiquidityResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgAddLiquidityResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSwapCoin) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSwapCoin: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSwapCoin: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AmountIn", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.AmountIn.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field AmountOutMin", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.AmountOutMin.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSwapCoinResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSwapCoinResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSwapCoinResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
