@@ -66831,6 +66831,8 @@ definitions:
             NOTE: The amount field is an Int which implements the custom method
             signatures required by gogoproto.
     description: Period defines a length of time and amount of coins that will vest.
+  coswap.swap.MsgDistributeCoinsResponse:
+    type: object
   coswap.swap.MsgMintCoinsResponse:
     type: object
   coswap.swap.Params:

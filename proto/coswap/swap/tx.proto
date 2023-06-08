@@ -9,7 +9,8 @@ option go_package = "coswap/x/swap/types";
 
 // Msg defines the Msg service.
 service Msg {
-  rpc MintCoins (MsgMintCoins) returns (MsgMintCoinsResponse);
+  rpc MintCoins       (MsgMintCoins      ) returns (MsgMintCoinsResponse      );
+  rpc DistributeCoins (MsgDistributeCoins) returns (MsgDistributeCoinsResponse);
 }
 message MsgMintCoins {
            string                   admin  = 1;
@@ -17,4 +18,12 @@ message MsgMintCoins {
 }
 
 message MsgMintCoinsResponse {}
+
+message MsgDistributeCoins {
+           string                   admin     = 1;
+           string                   toAddress = 2;
+  repeated cosmos.base.v1beta1.Coin amount    = 3 [(gogoproto.nullable) = false];
+}
+
+message MsgDistributeCoinsResponse {}
 
