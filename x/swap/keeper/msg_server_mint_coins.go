@@ -21,7 +21,8 @@ func (k msgServer) MintCoins(goCtx context.Context, msg *types.MsgMintCoins) (*t
 		return nil, errors.New(msg.Admin + " is not admin")
 	}
 
-	err = k.Keeper.bankKeeper.MintCoins(ctx, banktypes.ModuleName, msg.Amount)
+	var coins sdk.Coins = msg.Amount
+	err = k.Keeper.bankKeeper.MintCoins(ctx, banktypes.ModuleName, coins.Sort())
 	if err != nil {
 		return nil, err
 	}
