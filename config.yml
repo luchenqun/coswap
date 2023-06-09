@@ -1,43 +1,54 @@
 version: 1
 accounts:
-  - name: admin
-    coins: ["81000000dex"]
-    mnemonic: october pride genuine harvest reunion sight become tuna kingdom punch girl lizard cat crater fee emotion seat test output safe volume caught design soft
-  - name: alice
-    coins: ["50000000dex"]
-    mnemonic: sugar narrow update three surround cupboard vital vapor fabric city father toe tumble call element certain lava nose sponsor unaware code combine whale muscle
-  - name: bob
-    coins: ["60000000dex"]
-    mnemonic: mammal knife face mechanic short balance toe raven armor asset grass wing crew quit arena purchase lawsuit scene style fork gauge they bottom mammal
-validators:
-  - name: admin
-    bonded: "1000000dex"
-client:
-  openapi:
-    path: docs/static/openapi.yml
+- name: admin
+  coins:
+  - 81000000dex
+  mnemonic: october pride genuine harvest reunion sight become tuna kingdom punch
+    girl lizard cat crater fee emotion seat test output safe volume caught design
+    soft
+- name: alice
+  coins:
+  - 50000000dex
+  mnemonic: sugar narrow update three surround cupboard vital vapor fabric city father
+    toe tumble call element certain lava nose sponsor unaware code combine whale muscle
+- name: bob
+  coins:
+  - 60000000dex
+  mnemonic: mammal knife face mechanic short balance toe raven armor asset grass wing
+    crew quit arena purchase lawsuit scene style fork gauge they bottom mammal
 faucet:
   name: admin
-  coins: ["1000000dex"]
+  coins:
+  - 1000000dex
+client:
+  typescript:
+    path: ts-client
+  composables:
+    path: vue/src/composables
+  openapi:
+    path: docs/static/openapi.yml
 genesis:
   app_state:
-    staking:
-      params:
-        bond_denom: "dex"
     crisis:
       constant_fee:
-        denom: "dex"
+        denom: dex
     gov:
       deposit_params:
         min_deposit:
-          -
-            denom: "dex"
-            amount: "1000"
+        - amount: "1000"
+          denom: dex
     mint:
       params:
-        mint_denom: "dex"
         inflation_max: "0.000000000000000000"
         inflation_min: "0.000000000000000000"
+        mint_denom: dex
+    staking:
+      params:
+        bond_denom: dex
     swap:
       params:
-        admin: "dex12ltvts09ga3gj32hsmnwq922ze0gmk4tv8nrzd"
+        admin: dex12ltvts09ga3gj32hsmnwq922ze0gmk4tv8nrzd
         commissionRate: "0.050000000000000000"
+validators:
+- name: admin
+  bonded: 1000000dex
