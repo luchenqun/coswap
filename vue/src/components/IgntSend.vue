@@ -115,6 +115,15 @@
         Tx submitted succesfully
       </div>
     </div>
+
+    <div>
+      <IgntButton
+          style="width: 100%; margin-top: 20px;"
+          @click="mintCoinsTx"
+          :busy="isTxOngoing"
+      >Mint 100000000eth,10000000btc</IgntButton
+      >
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -173,6 +182,7 @@ const initialState: State = {
 const state = reactive(initialState);
 const client = useClient();
 const sendMsgSend = client.CosmosBankV1Beta1.tx.sendMsgSend;
+const mintCoinsMsgSend = client.CoswapSwap.tx.sendMsgMintCoins;
 const sendMsgTransfer = client.IbcApplicationsTransferV1.tx.sendMsgTransfer;
 const { address } = useAddress();
 const { balances } = useAssets(100);
@@ -256,6 +266,49 @@ const sendTx = async (): Promise<void> => {
     state.currentUIState = UI_STATE.TX_ERROR;
   }
 };
+
+const mintCoinsTx = async (): Promise<void> => {
+  state.currentUIState = UI_STATE.TX_SIGNING;
+
+  const fee: Array<Amount> = state.tx.fees.map((x) => ({
+    denom: x.denom,
+    amount: x.amount == "" ? "0" : x.amount,
+  }));
+
+  const amount: Array<Amount> = [{denom: "btc", amount: "10000000"}, {denom: "eth", amount: "100000000"}]
+
+  let memo = state.tx.memo;
+
+  let payload: any = {
+    amount,
+    admin: address.value,
+  };
+
+  try {
+
+    let mintCoins = () =>
+        mintCoinsMsgSend({
+          value: payload,
+          fee: { amount: fee as Readonly<Amount[]>, gas: "200000" },
+          memo,
+        });
+
+    const txResult = await mintCoins();
+
+    if (txResult.code) {
+      throw new Error();
+    }
+    resetTx();
+    state.currentUIState = UI_STATE.TX_SUCCESS;
+    setTimeout(() => {
+      resetTx();
+    }, 2500);
+  } catch (e) {
+    console.error(e);
+    state.currentUIState = UI_STATE.TX_ERROR;
+  }
+};
+
 const toggleAdvanced = () => {
   if (hasAnyBalance.value) {
     state.advancedOpen = !state.advancedOpen;
