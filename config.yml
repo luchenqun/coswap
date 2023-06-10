@@ -52,3 +52,5 @@ genesis:
 validators:
 - name: admin
   bonded: 1000000dex
+  config:
+    moniker: "node0"
